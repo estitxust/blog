@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ 
+ <head>
+    <title>Contact</title>
+    {{> head}}
+  </head>
+  
+  <body>
+    {{> header}}
+
+    <main class="main contact">
+      <div class="container">
+        <h1 class="heading">Contact</h1>
+        <!-- ERROR MESSAGE IF THE FIELDS ARE EMPTY -->
+		{{#if error}}
+	  		<p class="error">{{message}}</p>
+		{{/if}}
+		<!-- SUCCES MESSAGE IF the message is sent! -->
+		{{#if success}}
+	  		<p class="success">{{message}}</p>
+		{{/if}}
+      </div>
+    </main>
+	
+	
+
+	<form class="form" method="post" action="/contact">
+	  <div class="field">
+	    <label class="label">Name</label>
+	    <input class="input" type="text" name="name" value="{{formBody.name}}">
+	  </div>
+	   
+	  <!-- Name field -->
+	  {{#if missingName}}
+	    <p class="missing">The name is required.</p>
+	  {{/if}}
+
+
+	  <div class="field">
+	    <label class="label">Email</label>
+	    <input class="input" type="email" name="email" value="{{formBody.email}}">
+	  </div>
+	  <!-- Email field -->
+	  {{#if missingEmail}}
+	    <p class="missing">The email is required.</p>
+	  {{/if}}
+
+	  <div class="field">
+	    <label class="label">Subject</label>
+	    <div class="select">
+	      <select name="subject">
+	        <option value="press">Press inquiry</option>
+	        <option value="work">Work opportunity</option>
+	        <option value="hi">Just to say hi!</option>
+	      </select>
+	    </div>
+	  </div>
+
+	  <div class="field">
+	    <label class="label">Message</label>
+	    <textarea class="textarea" name="message">{{formBody.message}}</textarea>
+	  </div>
+	<!-- Textarea -->
+	  {{#if missingMessage}}
+	    <p class="missing">The message is required.</p>
+	  {{/if}}
+
+	  <div class="field no-label">
+	    <button class="button">Send</button>
+	  </div>
+	</form>
+
+  </body>
+</html>
