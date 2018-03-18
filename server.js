@@ -12,6 +12,8 @@ var blogPosts = require('./blogPosts.json'); //and create blogPost.json
 //move data from the server to the web
 //handlebars allows you put javascript in your html
 
+var http = require('http').Server(app); //Markus (1)
+
 var app = express();
 
 // Register '.handlebars' extension with exphbs
@@ -308,9 +310,19 @@ app.post('/edit-post/:post_id', function(req, res) {
 });
 
 //app is now listening for requests
-app.listen(5000, function () {
-  console.log('Lesson 1 listening on port 5000!');
+
+
+//This is commented to test Markus(2)
+//__________________________________
+// app.listen(5000, function () {
+//   console.log('Lesson 1 listening on port 5000!');
+// });
+//__________________________________
+
+http.listen(process.env.PORT || 3000, function(){
+  console.log('listening on', http.address().port);
 });
+
 //check it into Chrome into the link:
 //http://localchost:5000/home
 // POST (To send something)
