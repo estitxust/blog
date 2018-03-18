@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "The Code at Uni JavaScript Course",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "Code At Uni",
   "license": "ISC",
   "dependencies": {
